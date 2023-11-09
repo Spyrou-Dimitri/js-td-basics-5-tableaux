@@ -13,3 +13,49 @@
 // 7. Utilisez la fonction 'calculateurPourboire' pour calculer les pourboires pour chaque facture du tableau 'factures' et ajoutez-les au tableau 'pourboires'.
 // 8. Pour chaque facture, calculez le montant final payé en ajoutant le montant de la facture au montant du pourboire, puis ajoutez-le au tableau 'montantsFinaux'.
 // 9. Affichez les tableaux 'pourboires' et 'montantsFinaux' dans la console pour voir les résultats.
+
+const facture1 = parseInt(prompt("Quel est le montant de la première facture ?"));
+const facture2 = parseInt(prompt("Quel est le montant de la deuxième facture ?"));
+const facture3 = parseInt(prompt("Quel est le montant de la troisième facture ?"));
+
+const factures = [facture1, facture2, facture3];
+
+function calculateurPourboire(facture) {
+    let remise;
+    if (facture < 50) {
+        remise = (facture * 20) / 100;
+        return remise;
+    } else if (facture >= 50 && facture <=200) {
+        remise = (facture * 15) / 100;
+        return remise;
+    } else {
+        remise = (facture * 10) / 100;
+        return remise;
+    }
+}
+let pourboires = [];
+let montantFinaux = [];
+
+for (i = 0; i < factures.length; i++) {
+    pourboires.push(calculateurPourboire(factures[i]));
+}
+for (i = 0; i < 3; i++) {
+    montantFinaux.push(pourboires[i] + factures[i]);
+}
+
+for (i = 0; i < pourboires.length; i ++) {
+    console.log("La case " + i + " du tableau des pourboires vaut : " + pourboires[i]);
+}
+
+for (i = 0; i < montantFinaux.length; i ++) {
+    console.log("La case " + i + " du tableau des montant finaux vaut : " + montantFinaux[i]);
+}
+
+
+
+/*
+pourboires.forEach(lesPourboires => {
+    console.log("La case " + i + " du tableau des pourboires vaut : " + lesPourboires);
+})
+*/
+
